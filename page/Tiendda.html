@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIENDA | BANDEJA PASADA</title>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d78cb1c4f2.js" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="../imagenes/Logos/bandeja-pasada-150px-transparente-icono.ico">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="letras-menu">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="letras-texto-notas">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Comic+Neue:wght@700&family=Inconsolata&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="portada">
+            <img class="foto" src="../imagenes/Logos/bandeja-pasada-portada.jpg" alt="portada">
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light conter-menu"
+            style="background-color: #F14100 !important;">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav justify-content-center menu">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../index.html">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Quienes-somos.html">QUIENES SOMOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Instituto.html">INSTITUTO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Atenas.html">ATENAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Barrio-parque.html">BARRIO PARQUE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Nba.html">NBA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Tiendda.html">TIENDA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contacto.html">CONTACTO</a>
+                        </li>
+                    </ul>
+                    <div class="cart-btn">
+                        <span class="nav-icon">
+                            <i id="btn-carrito" class="fa-solid fa-cart-shopping"></i>
+                        </span>
+                        <div class="cart-items">0</div>
+                    </div>
+                </div>
+        </nav>
+    </header>
+    <main>
+        <div class="carrito-container col-sm-4">
+            <h2>Tu Carrito</h2>
+            <!-- Elementos del carrito -->
+            <ul id="carrito" class="list-group"></ul>
+            <hr>
+            <!-- Precio total -->
+            <p class="text-right">Total: $<span id="total"></span></p>
+            <button id="btn-vaciar" class="btn btn-danger">Vaciar</button>
+        </div>
+        <div id="items" class="row row-cols-1 row-cols-md-3 g-4">
+        </div>
+
+
+    </main>
+    <footer>
+        <div>
+            <a href="https://www.instagram.com/fedeluna89/" target="_blank"><img
+                    src="https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2021/06/Instagram-Logo-png.png?w=512&ssl=1"
+                    alt="instagram" width="40"> </a>
+        </div>
+        <div>
+            <div class="boton-completo">
+                <a href="../index.html"> <button>
+                        <div class="boton">VOLVER AL INICIO</div>
+                    </button></a>
+            </div>
+        </div>
+    </footer>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../JS/index.js"></script>
+</body>
+
+</html>
