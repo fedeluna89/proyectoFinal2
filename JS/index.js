@@ -92,13 +92,15 @@ function addItemCarrito() {
             }
         })
 
-        Toast.fire({
-            icon: 'success',
-            title: 'Producto agregado al carrito'
-        })
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Agregaste a carrito",
+            showConfirmButton: false,
+            timer: 2000,
+            });
     });
 }
-
 
 function addProductoCarrito(evento) {
     carrito.push(evento.target.getAttribute('marcador'))
@@ -133,7 +135,7 @@ function renderizarCarrito() {
 
 function borrarItemCarrito(evento) {
     Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'warning',
         title: 'Ha sido borrado correctamente',
         showConfirmButton: false,
