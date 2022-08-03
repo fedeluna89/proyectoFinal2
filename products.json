@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "nombre":"Camiseta Instituto",
+        "precio":7000,
+        "imagen":"../imagenes/tienda/camisetaNegraInstituto.jpg"
+    },
+    {
+        "id":2,
+        "nombre":"atenas",
+        "precio":6000,
+        "imagen":"../imagenes/tienda/camisetaAtenas2.jpg"
+    },
+    {
+        "id":3,
+        "nombre":"Camiseta Denver",
+        "precio":176000,
+        "imagen":"../imagenes/tienda/denverCamisetaBlanca.jpg"
+    },
+    {
+        "id":4,
+        "nombre":"Campera Instituto",
+        "precio":9700,
+        "imagen":"../imagenes/tienda/camperaInstituto.jpeg"
+        }
+]

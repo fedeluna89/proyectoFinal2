@@ -1,54 +1,23 @@
-// Agregamos la base de datos de nuestros productos
-const productosBD = [{
-        id: 1,
-        nombre: 'Camiseta Instituto',
-        precio: 7000,
-        imagen: '../imagenes/tienda/camisetaNegraInstituto.jpg'
-    },
-    {
-        id: 2,
-        nombre: 'atenas',
-        precio: 6000,
-        imagen: '../imagenes/tienda/camisetaAtenas2.jpg'
-    },
-    {
-        id: 3,
-        nombre: 'Camiseta Denver',
-        precio: 176000,
-        imagen: '../imagenes/tienda/denverCamisetaBlanca.jpg'
-    },
-    {
-        id: 4,
-        nombre: 'Campera Instituto',
-        precio: 9700,
-        imagen: '../imagenes/tienda/camperaInstituto.jpeg'
-    }
-
-];
-
 // declaramos las variables
 let carrito = [];
+let productosBD = [];
 const divisa = '$';
 const DOMitems = document.querySelector('#items');
-const DOMcarrito = document.querySelector('#carrito');
-const DOMtotal = document.querySelector('#total');
-const DOMbotonVaciar = document.querySelector('#btn-vaciar');
 const DOMbotonCarrito = document.querySelector('#btn-carrito');
 const storage = window.localStorage;
 
 // Funciones para renderizar el carrito
 function main() {
-    logicaCarro();
     cargarCarritoDeLocalStorage();
     renderizarProductos();
-    renderizarCarrito();
-    addItemCarrito();
     muestraCarrito();
-
-
 }
 
-function renderizarProductos() {
+async function renderizarProductos() {
+    const productosRespuesta = await fetch('/products.json')
+    productosBD = await productosRespuesta.json()
+
+
     productosBD.forEach((info) => {
         const miNodo = document.createElement('div');
         miNodo.classList.add('card', 'col-sm-4');
@@ -77,39 +46,38 @@ function renderizarProductos() {
     });
 }
 
-function addItemCarrito() {
-    const DOMbtnadd = document.querySelector('.btn-add');
-    DOMbtnadd.addEventListener("click", () => {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Agregaste a carrito",
-            showConfirmButton: false,
-            timer: 2000,
-            });
-    });
-}
-
 function addProductoCarrito(evento) {
     carrito.push(evento.target.getAttribute('marcador'))
-    renderizarCarrito();
     guardarCarritoEnLocalStorage();
+
+    Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Agregaste a carrito",
+        showConfirmButton: false,
+        timer: 2000,
+    });
+
+    const DOMCartItems = document.querySelector('.cart-items')
+    DOMCartItems.textContent = carrito.length
 }
 
 function renderizarCarrito() {
-    DOMcarrito.textContent = '';
+    const DOMcarrito = document.querySelector('#carrito');
+    const DOMtotal = document.querySelector('#total');
+
     const carritoSinDuplicados = [...new Set(carrito)];
     carritoSinDuplicados.forEach((item) => {
         const miItem = productosBD.filter((itemBaseDatos) => {
@@ -145,8 +113,11 @@ function borrarItemCarrito(evento) {
     carrito = carrito.filter((carritoId) => {
         return carritoId !== id;
     });
-    renderizarCarrito(),
-        guardarCarritoEnLocalStorage()
+    
+    guardarCarritoEnLocalStorage()
+    const DOMCartItems = document.querySelector('.cart-items')
+    DOMCartItems.textContent = carrito.length
+
 }
 
 function calcularTotal() {
@@ -195,6 +166,8 @@ function muestraCarrito() {
             showConfirmButton: false,
             showCloseButton: true
         })
+        renderizarCarrito()
+        logicaCarro()
     });
 }
 
@@ -202,6 +175,8 @@ function muestraCarrito() {
 
 
 function logicaCarro() {
+    const DOMbotonVaciar = document.querySelector('#btn-vaciar');
+
     DOMbotonVaciar.addEventListener("click", () => {
         Swal.fire({
             title: "¿Estás seguro que querés vaciar tu carrito?",
@@ -223,6 +198,8 @@ function vaciarCarrito() {
     carrito = [];
     renderizarCarrito();
     localStorage.clear();
+    const DOMCartItems = document.querySelector('.cart-items')
+    DOMCartItems.textContent = carrito.length
 }
 
 function guardarCarritoEnLocalStorage() {
